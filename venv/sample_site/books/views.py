@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
+from books.models import Book, Author, Customer
 
 # Create your views here.
 
@@ -27,3 +28,10 @@ def get_params(request):
     id = request.GET['id']
     name = request.GET.get('name')
     return HttpResponse(f'Params: id-{id} name-{name}')
+
+def get_book_by_id(request, id):
+    try:
+        book = Book.objects.get(id=id)
+    except Book.DoesNotExist:
+        raise Http404(f'Book with the id {id} does not exists')
+    return render(request, 'books/index.html', {'book': book})
