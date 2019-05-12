@@ -1,0 +1,17 @@
+{% comment %} new {% endcomment %}
+{% for book in books %}
+<article>
+    <h1>{{book.id}} - {{book.name}} {{book.genre}} </h1>
+    <hr/>
+    <p>{{book.author}}</p>
+    <p>{{book.author.id}}</p>
+</article>
+{% endfor %}
+
+<form action="{% url 'books:submit' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" id="name" placeholder="name">
+    <input type="text" name="genre" id="genre" placeholder="genre">
+    <input type="text" name="author" id="author" placeholder="author id">
+    <button type="submit">Send</button>
+</form>

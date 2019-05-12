@@ -23,6 +23,6 @@ def app_index(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^books/', include('books.urls')),
+    url(r'^books/', include('books.urls'), name="books"),
     url(r'^$', app_index)
 ]
