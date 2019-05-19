@@ -16,13 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url , include
-from django.http import HttpResponse
-
-def app_index(request):
-    return HttpResponse('index')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^books/', include('books.urls'), name="books"),
-    url(r'^$', app_index)
+    url(r'^login/', include('login.urls')),
 ]

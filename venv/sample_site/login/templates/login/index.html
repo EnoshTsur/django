@@ -1,0 +1,15 @@
+<form action="{% url 'login_page:submit' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" id="name" placeholder="name">
+    <input type="password" name="password" id="password" placeholder="password">
+    
+    <label for="isAuthor">Author</label>
+    <input type="checkbox" name="isAuthor" id="isAuthor">
+    <button type="submit">Send</button>
+</form>
+
+<ul>
+    <li><a href="{% url 'books:index' %}">index</a></li>
+    <li><a href="{% url 'books:genre' %}">genre</a></li>
+    <li><a href="{% url 'books:create' %}">create</a></li>
+</ul>
